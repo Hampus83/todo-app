@@ -1,0 +1,59 @@
+/* Green #5C8F22
+Charred(brun) #752A07
+Toasted(beige) #FBCB7B
+Tomato #EB5E30 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FBCB7B;
+  color: rgb(45, 45, 45);
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.container {
+  margin-top: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.title {
+  margin-top: 3rem;
+  font-size: 32px;
+}
+
+.input {
+  color: rgb(45, 45, 45);
+  font-size: 24px;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  outline: none;
+  border: 2px solid rgb(45, 45, 45);
+  border-radius: 5px;
+}
+
+.button {
+  margin-top: -1rem;
+  font-size: 24px;
+  padding: 1rem 2rem;
+  appearance: none;
+  border: 2px solid rgb(45, 45, 45);
+  border-radius: 5px;
+  color: rgb(45, 45, 45);
+}
+
+.button:active {
+  background-color: #898989;
+}
+

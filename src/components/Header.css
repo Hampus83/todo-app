@@ -1,0 +1,14 @@
+.header {
+    background-color: #FBCB7B;
+    height: 10%;
+    border-bottom: 2px solid rgb(45, 45, 45);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+}
+
+.header__hamburgerWrapper {
+    display: flex;
+    
+}

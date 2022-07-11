@@ -1,0 +1,14 @@
+.add-todo__input {
+    background-color: #FBCB7B;
+    border: none;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+    padding: 0.5rem;
+}
+
+.add-todo__button {
+    font-size: 16px;
+    margin-top: -2rem;
+    padding: 0.5rem 1rem;
+    /* align-self: flex-end; */
+}
