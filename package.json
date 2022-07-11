@@ -1,6 +1,6 @@
 {
-  "homepage": "http://hampus83/github.io/todo-app",
-  "name": "react-todo-app-summer-22-real",
+  "homepage": "http://hampus83.github.io/todo-app",
+  "name": "todo-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
