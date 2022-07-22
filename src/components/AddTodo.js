@@ -1,29 +1,42 @@
-import './TodoItem.css';
+import './AddTodo.css';
 
-function TodoItem(props) {
+import { useState } from 'react';
+import { useRef } from 'react';
 
-    const { username, id, todo, setTodoList } = props;
+function AddTodo(props) {
 
-    async function deleteClickedTodo() {
+    const { setTodoList } = props;
+    const ref = useRef(null);
+    const [todoText, setTodoText] = useState();
+    const username = JSON.parse(localStorage.getItem('user'));
+
+
+    function getInput(event) {
+        setTodoText(event.target.value);
+        if (event.keyCode == 13) {
+            addNewTodo();
+        }
+    }
+
+    async function addNewTodo() {
         const input = {
             username: username,
-            id: id
+            todo: todoText
         }
 
-        console.log(input);
-
         const requestOptions = {
-            method: 'DELETE',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(input)
         }
 
-        const response = await fetch('https://brawny-gusty-navy.glitch.me/api/todos/delete/', requestOptions);
+        const response = await fetch('https://brawny-gusty-navy.glitch.me/api/todos/', requestOptions);
 
-        console.log(response);
+        const data = await response.json();
+        console.log(data);
 
-        console.log(id);
         getTheTodos();
+        ref.current.value = '';
     }
 
     async function getTheTodos() {
@@ -52,10 +65,11 @@ function TodoItem(props) {
     }
 
     return (
-        <li className='todo-item' onClick={ deleteClickedTodo }>
-            <span className='todo-item__text'>{ todo }</span>
-        </li>
+        <section className="container add-todo">
+            <input className='input add-todo__input' type="text" ref={ ref } placeholder='lägg till todo...' onKeyUp={getInput} onInput={getInput}/>
+            <button className='button add-todo__button' onClick={ addNewTodo }>LÄGG TILL</button>
+        </section>
     );
 }
 
-export default TodoItem;    
+export default AddTodo;

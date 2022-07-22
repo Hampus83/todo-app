@@ -2,19 +2,21 @@ import './Todos.css';
 
 import Header from '../components/Header';
 import TodoList from '../components/TodoList';
+import AddTodo from '../components/AddTodo';
 
-const Todos = () => {
+import { useState } from 'react';
+
+const Todos = (props) => {
+
+    const { username } = props;
+
+    const [todoList, setTodoList] = useState([]);
+
     return (
         <>
-            <>
             <Header />
-            <h1 className='title'>TODOS</h1>
-            <section className="container add-todo">
-                <input className='input add-todo__input' type="text" placeholder='lägg till todo...' />
-                <button className='button add-todo__button'>LÄGG TILL</button>
-            </section>
-            <TodoList /> 
-        </>
+            <AddTodo username={username} todoList={todoList} setTodoList={setTodoList}/>
+            <TodoList username={username} todoList={todoList} setTodoList={setTodoList}/>
         </>
     );
 }

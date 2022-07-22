@@ -1,17 +1,24 @@
 import './Header.css';
 
-import navicon from '../assets/navicon.svg';
+import { useNavigate } from 'react-router-dom';
+
+import logoutIcon from '../assets/logout_FILL0_wght400_GRAD0_opsz48.svg';
 
 function Header() {
 
-    function openMenu() {
-        console.log('hamburger-klick!');
+    const navigate = useNavigate();
+
+    function logOut() {
+        console.log('localStorage tömd!');
+        localStorage.clear();
+        navigate('/');
     }
 
     return (
         <header className='header'>
-            <section className='header__hamburgerWrapper' onClick={ openMenu }>
-                <img className='header__hamburger' src={navicon} alt="" />
+            <h2 className='header__username'>{ JSON.parse(localStorage.getItem('user')) }</h2>
+            <section className='header__logout-icon-Wrapper' onClick={ logOut }>
+                <img className='header__logout-icon' src={ logoutIcon } alt="" />
             </section>
         </header>      
     );

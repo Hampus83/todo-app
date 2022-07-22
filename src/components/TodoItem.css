@@ -1,0 +1,23 @@
+.todo-item {
+    background-color: #318397;
+    background-color: rgb(255, 172, 47);
+    color: rgb(45, 45, 45);
+    padding: 1rem;
+    margin: 0.5rem;
+    /* border: 1px solid black; */
+    box-shadow: 1.5px 1.5px 2px;
+    transition: all 0.05s ease-in;
+    user-select: none;
+}
+
+.todo-item:active {
+    background-color: rgb(104, 23, 23);
+    margin-right: 2rem;
+    margin-left: 2rem;
+    opacity: 0%;
+}
+
+.todo-item__text {
+    font-size: 22px;
+}
+
