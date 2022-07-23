@@ -6,10 +6,10 @@ import LoginItem from '../components/LoginItem';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = (props) => {
-    const { username, setUsername, password, setPassword } = props;
+const Login = () => {
 
     const navigate = useNavigate();
+
     let checkLocalStorage = '';
 
     function checkUser() {
@@ -28,7 +28,7 @@ const Login = (props) => {
         <>
             <Header />
             <h1 className='title'>LOGGA IN</h1>
-            <LoginItem username={username} setUsername={setUsername} password={password} setPassword={setPassword}/>
+            <LoginItem />
         </>
     );
 }

@@ -4,25 +4,25 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-function LoginItem(props) {
-
-    const { username, setUsername, password, setPassword } = props;
+function LoginItem() {
 
     const [visible, setVisible] = useState(false);
+    const [loginUsername, setLoginUsername] = useState();
+    const [loginPassword, setLoginPassword] = useState();
 
     const navigate = useNavigate();
 
     let classNames = 'login__error-message-hidden';
 
-    function getUsername(event) {
-        setUsername(event.target.value);
+    function getLoginUsername(event) {
+        setLoginUsername(event.target.value);
         if (event.keyCode == 13) {
             userLogin();
         }
     }
 
-    function getPassword(event) {
-        setPassword(event.target.value);
+    function getLoginPassword(event) {
+        setLoginPassword(event.target.value);
         if (event.keyCode == 13) {
             userLogin();
         }
@@ -42,8 +42,8 @@ function LoginItem(props) {
 
     async function userLogin() {
         const credentials = {
-            username: username,
-            password: password
+            username: loginUsername,
+            password: loginPassword
         }
 
         const requestOptions = {
@@ -58,7 +58,7 @@ function LoginItem(props) {
 
         if (data.success === true) {
             navigate('/todos');
-            localStorage.setItem('user', JSON.stringify(username));
+            localStorage.setItem('user', JSON.stringify(loginUsername));
         } else {
             showErrorMsg();
         }
@@ -66,8 +66,8 @@ function LoginItem(props) {
 
     return (
         <section className="container login">
-            <input className='input login__input' type="text" placeholder='ANVÄNDARNAMN' onKeyUp={ getUsername }/>
-            <input className='input login__input' type="password" placeholder='LÖSENORD' onKeyUp={ getPassword }/>
+            <input className='input login__input' type="text" placeholder='ANVÄNDARNAMN' onKeyUp={ getLoginUsername }/>
+            <input className='input login__input' type="password" placeholder='LÖSENORD' onKeyUp={ getLoginPassword }/>
             <button className='button login__loginButton' onClick={ userLogin }>LOGGA IN</button>
             <h4 className={ classNames }>Felaktigt användarnamn eller lösenord</h4>
             <Link className='login__register' to="/signup">Skapa konto här</Link>

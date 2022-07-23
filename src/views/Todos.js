@@ -6,17 +6,15 @@ import AddTodo from '../components/AddTodo';
 
 import { useState } from 'react';
 
-const Todos = (props) => {
-
-    const { username } = props;
+const Todos = () => {
 
     const [todoList, setTodoList] = useState([]);
 
     return (
         <>
             <Header />
-            <AddTodo username={username} todoList={todoList} setTodoList={setTodoList}/>
-            <TodoList username={username} todoList={todoList} setTodoList={setTodoList}/>
+            <AddTodo todoList={todoList} setTodoList={setTodoList}/>
+            <TodoList todoList={todoList} setTodoList={setTodoList}/>
         </>
     );
 }

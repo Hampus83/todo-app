@@ -1,22 +1,24 @@
 import './SignupItem.css';
 
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-function SignupItem(props) {
+function SignupItem() {
 
-    const { username, setUsername, password, setPassword } = props;
+    const [signupUsername, setSignupUsername] = useState();
+    const [signupPassword, setSignupPassword] = useState();
 
     const navigate = useNavigate();
 
-    function getUsername(event) {
-        setUsername(event.target.value);
+    function getSignupUsername(event) {
+        setSignupUsername(event.target.value);
         if (event.keyCode == 13) {
             signUp();
         }
     }
 
-    function getPassword(event) {
-        setPassword(event.target.value);
+    function getSignupPassword(event) {
+        setSignupPassword(event.target.value);
         if (event.keyCode == 13) {
             signUp();
         }
@@ -24,8 +26,8 @@ function SignupItem(props) {
 
     async function signUp() {
         const credentials = {
-            username: username,
-            password: password
+            username: signupUsername,
+            password: signupPassword
         }
 
         const requestOptions = {
@@ -41,14 +43,14 @@ function SignupItem(props) {
 
         if (data.success === true) {
             navigate('/todos');
-            localStorage.setItem('user', JSON.stringify(username));
+            localStorage.setItem('user', JSON.stringify(signupUsername));
         }
     }
 
     return (
         <section className=" container signup">
-            <input className='input signup__input' type="text" placeholder='ANVÄNDARNAMN' onKeyUp={ getUsername }/>
-            <input className='input signup__input' type="password" placeholder='LÖSENORD' onKeyUp={ getPassword }/>
+            <input className='input signup__input' type="text" placeholder='ANVÄNDARNAMN' onKeyUp={ getSignupUsername }/>
+            <input className='input signup__input' type="password" placeholder='LÖSENORD' onKeyUp={ getSignupPassword }/>
             <button className='button signup__signupButton' onClick={ signUp }>SKAPA KONTO</button>
         </section>  
     );
